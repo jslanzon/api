@@ -16,5 +16,9 @@ if(isset($path[2])) {$param = $path[2];} else {$param = ""; }
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+# Classes
 include_once "classes/db.class.php";
+
+# API´s
 include_once "api/bancos/bancos.php";
+include_once "api/titulos/titulos.php";
