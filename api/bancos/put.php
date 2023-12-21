@@ -1,7 +1,7 @@
 <?php
 
-if($acao == '' && $param ==''){echo json_encode(["ERRO" => "Caminho não encontrado"]);}
-if($acao == 'altera' && $param ==''){echo json_encode(["ERRO" => "É necessário informar o ID"]);}
+if($acao == '' && $param ==''){echo json_encode(["ERRO" => "Caminho não encontrado"]); exit;}
+if($acao == 'altera' && $param ==''){echo json_encode(["ERRO" => "É necessário informar o ID"]); exit;}
         
 if($acao == 'altera' && $param !=''){
 
