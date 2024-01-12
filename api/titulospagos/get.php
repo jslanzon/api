@@ -42,7 +42,7 @@ if($acao == 'lista' && $param !=''){
     $obj = $rs->fetchObject();
     
     if($obj){
-        echo json_encode(["dados" => $obj]);
+        echo json_encode($obj);
     }else{
         echo json_encode(["dados" => "Não existe parametros para retornar"]);
     }

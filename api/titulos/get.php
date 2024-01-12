@@ -4,7 +4,7 @@ if($acao == '' && $param ==''){echo json_encode(["ERRO" => "Caminho não encontr
         
 if($acao == 'lista' && $param ==''){
     $db = DB::connect();
-    $rs = $db->prepare("SELECT * FROM `titulos` WHERE `status` = 'Aberto' AND `acordado` >= '2024-01-01' AND `acordado` <= '2024-01-15' ORDER BY `data` DESC");
+    $rs = $db->prepare("SELECT * FROM `titulos` WHERE `status` = 'Aberto' AND `acordado` >= '2024-01-01' AND `acordado` <= '2024-01-15' ORDER BY `acordado`");
     $rs->execute();
     $obj = $rs->fetchAll(PDO::FETCH_ASSOC);
     
@@ -22,7 +22,7 @@ if($acao == 'lista' && $param !=''){
     $obj = $rs->fetchObject();
     
     if($obj){
-        echo json_encode(["dados" => $obj]);
+        echo json_encode($obj);
     }else{
         echo json_encode(["dados" => "Não existe parametros para retornar"]);
     }

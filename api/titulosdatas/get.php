@@ -4,7 +4,7 @@ if($acao == '' && $param ==''){echo json_encode(["ERRO" => "Caminho não encontr
         
 if($acao == 'lista' && $param ==''){
     $db = DB::connect();
-    $rs = $db->prepare("SELECT * FROM `titulos` WHERE `status` = 'Aberto' AND `acordado` >= '2024-01-01' AND `acordado` <= '2024-01-10' ORDER BY `acordado` DESC");
+    $rs = $db->prepare("SELECT * FROM `titulos` WHERE `status` = 'Aberto' AND `acordado` >= '2024-01-01' AND `acordado` <= '2024-01-31' ORDER BY `acordado`");
     $rs->execute();
     $obj = $rs->fetchAll(PDO::FETCH_ASSOC);
     
@@ -17,12 +17,12 @@ if($acao == 'lista' && $param ==''){
 
 if($acao == 'lista' && $param !=''){
     $db = DB::connect();
-    $rs = $db->prepare("SELECT * FROM `titulos` WHERE `status` = 'Aberto' AND `acordado` >= '2024-01-01' AND `acordado` <= '{$param}' ORDER BY `acordado` DESC");
+    $rs = $db->prepare("SELECT * FROM titulos WHERE `status` = 'Aberto' AND `acordado` >= '2024-01-01' AND acordado <='{$param}'ORDER BY `acordado`");
     $rs->execute();
-    $obj = $rs->fetchObject();
+    $obj = $rs->fetchAll(PDO::FETCH_ASSOC);
     
     if($obj){
-        echo json_encode(["dados" => $obj]);
+        echo json_encode($obj);
     }else{
         echo json_encode(["dados" => "Não existe parametros para retornar"]);
     }
