@@ -22,3 +22,5 @@ include_once "classes/db.class.php";
 # API´s
 include_once "api/bancos/bancos.php";
 include_once "api/titulos/titulos.php";
+include_once "api/titulosdatas/titulos.php";
+include_once "api/titulospagos/titulos.php";
