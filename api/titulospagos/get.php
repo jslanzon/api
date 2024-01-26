@@ -5,6 +5,7 @@ if($acao == '' && $param ==''){echo json_encode(["ERRO" => "Caminho não encontr
 if($acao == 'lista' && $param ==''){
     $db = DB::connect();
     $rs = $db->prepare("SELECT 
+    t.id,
     t.descr,
     t.total,
     t.id_banco,
@@ -16,12 +17,14 @@ if($acao == 'lista' && $param ==''){
     b.limite,
     b.status
 
+    
     FROM titulos AS t
 
     JOIN bancos as b 
     ON t.id_banco=b.id     
     
-    WHERE t.data >= '2024-01-01' 
+   
+    WHERE t.data >= '2023-12-01' 
     
     
     ORDER BY t.data DESC");
